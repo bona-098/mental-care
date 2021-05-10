@@ -1,59 +1,61 @@
-@include('layouts.header')
 <x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-        </x-slot>
-        <h3 class="title is-semibolded">Signup</h3>
-		<p class="subtitle is-6">Try to connect with us</p>
-        <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
+    <section id="mc-login" class="section">
+		<div class="columns is-centered">
+			<div class="column is-4">
+				<h3 class="title is-semibolded">Signup</h3>
+				<p class="subtitle is-6">Try to connect with us</p>
+				<form method="POST" action="{{ route('register') }}">
+                    @csrf
+					<div class="field">
+					  <label class="label is-mediumed">Nama Lengkap</label>
+					  <div class="control">
+						  <input class="input" type="text" placeholder="" name="name" required>
+						  <x-validate-error-message name='name'/>
+					</div>
+					</div>
 
-        <form method="POST" action="{{ route('register') }}">
-            @csrf
+					<div class="field">
+					  <label class="label is-mediumed">Email</label>
+					  <div class="control">
+						  <input class="input" type="text" placeholder="example@gmail.com" name="email" required>
+						<x-validate-error-message name='email'/>
+					  </div>
+					</div>
 
-            <!-- Name -->
-            <div>
-                <x-label for="name" :value="__('Name')" />
+					<div class="field">
+					  <label class="label is-mediumed">Nomor Telpon</label>
+					  <div class="control">
+					    <input class="input" type="text" name="no_telp" required>
+						<x-validate-error-message name='no_telp'/>
+					</div>
+					</div>
 
-                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
-            </div>
+					<div class="field">
+					  <label class="label is-mediumed">Kata Sandi</label>
+					  <div class="control">
+					    <input class="input" type="password" name="password" required>
+						<x-validate-error-message name='password'/>
+					</div>
+					</div>
 
-            <!-- Email Address -->
-            <div class="mt-4">
-                <x-label for="email" :value="__('Email')" />
-
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
-            </div>
-
-            <!-- Password -->
-            <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
-
-                <x-input id="password" class="block mt-1 w-full"
-                                type="password"
-                                name="password"
-                                required autocomplete="new-password" />
-            </div>
-
-            <!-- Confirm Password -->
-            <div class="mt-4">
-                <x-label for="password_confirmation" :value="__('Confirm Password')" />
-
-                <x-input id="password_confirmation" class="block mt-1 w-full"
-                                type="password"
-                                name="password_confirmation" required />
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
-                </a>
-
-                <x-button class="ml-4">
-                    {{ __('Register') }}
-                </x-button>
-            </div>
-        </form>
-    </x-auth-card>
+					<div class="field">
+					  <label class="label is-mediumed">Ulangi Kata Sandi</label>
+					  <div class="control">
+					    <input class="input" type="password" name="password_confirmation" required>
+						<x-validate-error-message name='password_confirmation'/>
+					  </div>
+					</div>
+					<div class="field mt-4">
+					  <div class="control">
+					    <button class="button is-dark is-fullwidth" type="submit">Daftar</button>
+					  </div>
+					</div>
+				</form>
+				<div class="has-text-centered mt-4">
+					<p>Sudah memiliki akun ? <a href="{{route('login')}}">Masuk</a></p>
+				</div>
+			</div>
+		</div>
+	</section>
 </x-guest-layout>
 @include('layouts.footer')

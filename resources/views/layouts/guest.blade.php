@@ -12,13 +12,27 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/bulma.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/design.css') }}">
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
     </head>
     <body>
-        <div class="font-sans text-gray-900 antialiased">
-            {{ $slot }}
+        <div class="wrapjob">
+            <header>
+                @include('layouts.navigation')
+            </header>
+            
+            <main>
+                <div class="container">
+                    {{ $slot }}
+                </div>
+            </main>
+            <footer class="footer">
+                @include('layouts.footer')
+            </footer>
         </div>
+	    <script type="text/javascript" src="asset/js/jquery-3.6.0.min.js"></script>
     </body>
 </html>

@@ -1,4 +1,3 @@
-@include('layouts.header')
 <x-app-layout>    
 
     <x-slot name="title">
@@ -99,4 +98,3 @@
 	</section>
     
 </x-app-layout>
-@include('layouts.footer')

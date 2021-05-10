@@ -1,6 +1,40 @@
-@include('layouts.header')
 <x-guest-layout >
-    <x-auth-card>
+    <section id="mc-login" class="section">
+		<div class="columns is-centered">
+			<div class="column is-4">
+				<h3 class="title is-semibolded">Login</h3>
+				<p class="subtitle is-6">Try to connect with us</p>
+				<form action="{{route('login')}}" method="POST">
+          @csrf
+					<div class="field">
+					  <label class="label is-mediumed">Email</label>
+					  <div class="control">
+					    <input class="input" type="text" placeholder="example@gmail.com" name="email">
+              <x-validate-error-message name='email'/>
+					  </div>
+					</div>
+
+					<div class="field">
+					  <label class="label is-mediumed">Kata Sandi</label>
+					  <div class="control">
+					    <input class="input" type="password" name="password">
+              <x-validate-error-message name='password'/>
+					  </div>
+					</div>
+
+					<div class="field mt-4">
+					  <div class="control">
+					    <button class="button is-dark is-fullwidth" type="submit">Masuk</button>
+					  </div>
+					</div>
+				</form>
+				<div class="has-text-centered mt-4">
+					<p>Belum memiliki akun ? <a href="{{route('signup')}}">Daftar</a></p>
+				</div>
+			</div>
+		</div>
+	</section>
+    {{-- <x-auth-card>
 	</section>
     <h3 class="title is-semibolded">Login</h3>
 	<p class="subtitle is-6">Try to connect with us</p>
@@ -56,6 +90,5 @@
                 </x-button>
             </div>
         </form>
-    </x-auth-card>
+    </x-auth-card> --}}
 </x-guest-layout>
-@include('layouts.footer')

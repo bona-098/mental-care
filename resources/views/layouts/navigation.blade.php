@@ -1,4 +1,69 @@
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
+<nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <!-- <a href="index.php" class="navbar-item is-semibolded is-size-4 has-text-weight-bold has-text-dark">
+                   <span class="is-bolded has-text-dark">Mental</span>care
+            </a> -->
+            <a href="index.php" class="navbar-item">
+                <img src="{{asset('img\logomc.png')}}" alt="logo">
+            </a>
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+            </a>
+          </div>
+
+          <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-end">
+                <a 
+                    href="/" 
+                    class="navbar-item is-mediumed px-5">
+                    Home
+                </a>
+                <a 
+                    href="quiz"
+                    class="navbar-item is-mediumed px-5">
+                    Quiz
+                </a>
+                <a 
+                    href="Psychologist"
+                    class="navbar-item is-mediumed px-5">
+                    Psychologist
+                </a>
+                <a 
+                href="article.php" 
+                class="navbar-item is-mediumed px-5">
+                    Article
+                </a>
+                    <div class="navbar-item">
+                        @if (auth()->id() !== null)
+                            <div class="buttons">
+                                <a href="login" class="button is-dark is-mediumed is-inverted px-5">{{auth()->user()->email}}</a>
+                                <a href="register" class="button is-danger px-5">
+                                    <strong class="has-text-light is-mediumed">
+                                        <form action="{{route('logout')}}" method="post">
+                                            @csrf
+                                            <button type="submit" class="font-bold">Logout</button>
+                                        </form>
+                                    </strong>
+                                </a>
+                            </div>
+                        @else
+                        <div class="buttons">
+                            <a href="login" class="button is-dark is-mediumed is-inverted px-5">Masuk</a>
+                            <a href="register" class="button is-dark px-5">
+                                <strong class="has-text-light is-mediumed">Daftar</strong>
+                            </a>
+                        </div>
+                        @endif
+                    </div>
+            </div>
+          </div>
+    </div>
+</nav>
+
+{{-- <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -97,4 +162,4 @@
             </div>
         </div>
     </div>
-</nav>
+</nav> --}}

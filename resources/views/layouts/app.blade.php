@@ -12,25 +12,27 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/bulma.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/design.css') }}">
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
     </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
-            @include('layouts.navigation')
-
-            <!-- Page Heading -->
-            <header class="bg-white shadow">
-                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                    {{ $header }}
-                </div>
+    <body>
+        <div class="wrapjob">
+            <header>
+                @include('layouts.navigation')
             </header>
-
-            <!-- Page Content -->
+            
             <main>
-                {{ $slot }}
+                <div class="container">
+                    {{ $slot }}
+                </div>
             </main>
+            <footer class="footer">
+                @include('layouts.footer')
+            </footer>
         </div>
+	    <script type="text/javascript" src="{{asset('js/jquery-3.6.0.min.js')}}"></script>
     </body>
 </html>
